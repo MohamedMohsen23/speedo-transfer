@@ -8,6 +8,7 @@ import { RegisterComponent } from './account/register/register.component';
 import { LogoutComponent } from './account/logout/logout.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
