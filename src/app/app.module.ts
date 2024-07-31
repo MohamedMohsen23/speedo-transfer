@@ -8,6 +8,10 @@ import { RegisterComponent } from './account/register/register.component';
 import { LogoutComponent } from './account/logout/logout.component';
 import { HomeComponent } from './shared/components/home/home.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { HeroSectionComponent } from './shared/components/hero-section/hero-section.component';
+import { CurrencyDropdownComponent } from './shared/components/currency-dropdown/currency-dropdown.component';
+import { TransferMoneyComponent } from './account/transfer-money/transfer-money.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
     RegisterComponent,
     LogoutComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    NavbarComponent,
+    HeroSectionComponent,
+    CurrencyDropdownComponent,
+    TransferMoneyComponent
   ],
   imports: [
     BrowserModule,

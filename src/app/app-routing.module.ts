@@ -5,9 +5,19 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { LoginComponent } from './account/login/login.component';
 import { LogoutComponent } from './account/logout/logout.component';
 import { RegisterComponent } from './account/register/register.component';
+import { TransferMoneyComponent } from './account/transfer-money/transfer-money.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  {
+    path: '',
+    component: HomeComponent,
+    children: [
+      {
+        path: 'transfer-money',
+        component: TransferMoneyComponent,
+      },
+    ],
+  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'logout', component: LogoutComponent },
