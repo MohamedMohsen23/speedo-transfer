@@ -1,1 +1,169 @@
-<p>logout works!</p>
+<div class="flex flex-col mb-10 justify-center items-center">
+  <div
+    class="flex bg-gray-500 w-[16rem] sm:w-[36rem] p-5 mt-20 mb-8 gap-3"
+    *ngIf="showAlretBox"
+  >
+    <svg
+      width="100"
+      height="35"
+      viewBox="0 0 25 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="12.0267" cy="12" r="12" fill="#24221E" />
+      <path
+        d="M13.945 17.5647C13.945 18.6187 13.1019 19.4829 12.0269 19.4829C10.9518 19.4829 10.1087 18.6187 10.1087 17.5647C10.1087 16.5108 10.9519 15.6466 12.0269 15.6466C13.1018 15.6466 13.945 16.5108 13.945 17.5647ZM12.9059 13.7284H11.1278C10.8642 13.7284 10.6473 13.5212 10.6352 13.2579L10.2588 5.03276C10.2459 4.75188 10.4702 4.51709 10.7514 4.51709H13.3011C13.5828 4.51709 13.8072 4.75257 13.7937 5.03389L13.3984 13.259C13.3858 13.5218 13.169 13.7284 12.9059 13.7284Z"
+        fill="white"
+      />
+    </svg>
+    <p class="text-base sm:text-fs-p font-semibold">
+      We Logged you out because you were inactive for 5 minutes - it's to help
+      your account secure
+    </p>
+    <svg
+      (click)="hideAlretBox()"
+      class="cursor-pointer"
+      width="100"
+      height="35"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6.758 17.243L12.001 12L17.244 17.243M17.244 6.75702L12 12L6.758 6.75702"
+        stroke="#24221E"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </div>
+
+  <div class="flex flex-col shadow-lg p-10 gap-5 mt-10">
+    <p class="text-fs-xs-title sm:text-fs-sm-title font-semibold">
+      Welcome back
+    </p>
+    <p class="text-gray-1400 text-fs-small sm:text-base">
+      Login to your account
+    </p>
+
+    <form action="">
+      <div class="flex flex-col gap-2 mb-5">
+        <label class="text-gray-1600 text-fs-small sm:text-base" for="email"
+          >Your Email Address</label
+        >
+        <input
+          id="email"
+          type="email"
+          placeholder="Email@gmail.com"
+          class="input"
+        />
+      </div>
+      <div class="flex flex-col relative gap-2">
+        <label class="text-gray-1600 text-fs-small sm:text-base" for="password"
+          >Password</label
+        >
+        <input
+          id="password"
+          [type]="showPassword ? 'text' : 'password'"
+          placeholder="************"
+          class="mb-5 input"
+        />
+        <svg
+          *ngIf="showPassword"
+          (click)="toggleShowPassword()"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="absolute right-6 top-11 sm:right-5 sm:top-12 cursor-pointer"
+        >
+          <path
+            d="M15.58 12C15.58 13.98 13.98 15.58 12 15.58C10.02 15.58 8.42 13.98 8.42 12C8.42 10.02 10.02 8.41998 12 8.41998C13.98 8.41998 15.58 10.02 15.58 12Z"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12 20.27C15.53 20.27 18.82 18.19 21.11 14.59C22.01 13.18 22.01 10.81 21.11 9.39997C18.82 5.79997 15.53 3.71997 12 3.71997C8.47 3.71997 5.18 5.79997 2.89 9.39997C1.99 10.81 1.99 13.18 2.89 14.59C5.18 18.19 8.47 20.27 12 20.27Z"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <svg
+          *ngIf="!showPassword"
+          (click)="toggleShowPassword()"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="absolute right-6 top-11 sm:right-5 sm:top-12 cursor-pointer"
+        >
+          <path
+            d="M14.53 9.46998L9.47 14.53C8.82 13.88 8.42 12.99 8.42 12C8.42 10.02 10.02 8.41998 12 8.41998C12.99 8.41998 13.88 8.81998 14.53 9.46998Z"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M17.82 5.76998C16.07 4.44998 14.07 3.72998 12 3.72998C8.47 3.72998 5.18 5.80998 2.89 9.40998C1.99 10.82 1.99 13.19 2.89 14.6C3.68 15.84 4.6 16.91 5.6 17.77"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8.42 19.53C9.56 20.01 10.77 20.27 12 20.27C15.53 20.27 18.82 18.19 21.11 14.59C22.01 13.18 22.01 10.81 21.11 9.39999C20.78 8.87999 20.42 8.38999 20.05 7.92999"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M15.51 12.7C15.25 14.11 14.1 15.26 12.69 15.52"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M9.47 14.53L2 22"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M22 2L14.53 9.47"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <button class="submit-btn">Login</button>
+      </div>
+    </form>
+
+    <p class="text-gray-1400 text-fs-small sm:text-base">
+      Don't have an account?
+      <a class="font-medium text-primary-500 underline" routerLink="/register"
+        >Create Account</a
+      >
+    </p>
+  </div>
+</div>
+
+<div
+  class="absolute bottom-[-20rem] w-full h-[56px] flex justify-center items-center bg-primary-100"
+>
+  <p>©Speedo Transfer Payments Limited 2024</p>
+</div>
