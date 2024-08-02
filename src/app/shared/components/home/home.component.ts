@@ -13,11 +13,13 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
+    // console.log(this.currentRoute);
+
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.currentRoute = event.url;
-        console.log(this.currentRoute);
+        // console.log(this.currentRoute);
       });
   }
 }
