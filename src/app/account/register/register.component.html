@@ -20,16 +20,18 @@
 </div>
 
 <div class="max-w-lg mx-auto bg-white p-8 shadow-xl rounded-lg mt-20 mb-20">
-  <h1 class="text-fs-md-title font-semibold mb-2 text-gray-1800">Create Your Account</h1>
+  <h1 class="text-fs-md-title font-semibold mb-2 text-gray-1800">
+    Create Your Account
+  </h1>
   <p class="text-gray-1400 mb-4 fs-body">
     Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor
     incididunt ut labore.
   </p>
   <div class="max-w-lg mx-auto bg-white p-8 shadow-md rounded-lg">
-    <form  (ngSubmit)="onSubmit()" class="space-y-4">
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="space-y-4">
       <!-- Name -->
       <div class="mb-4">
-        <label for="name" class="block text-gray-1600  mb-2 fs-body"
+        <label for="name" class="block text-gray-1600 mb-2 fs-body"
           >User name</label
         >
         <input
@@ -207,7 +209,9 @@
             (registerForm.get('password')?.touched || registerForm.dirty)
           "
         >
-          <p class="text-red-500 text-sm">Password is required</p>
+          <p class="text-red-500 text-sm">
+            Password should be at least 8 characters
+          </p>
         </div>
         <button
           type="button"
@@ -223,9 +227,7 @@
 
       <!-- Confirm Password Field -->
       <div class="relative mb-6">
-        <label
-          for="confirm-password"
-          class="block text-gray-1600 fs-body mb-2"
+        <label for="confirm-password" class="block text-gray-1600 fs-body mb-2"
           >Confirm Password</label
         >
         <input
@@ -256,7 +258,30 @@
           ></i>
         </button>
       </div>
+      <p
+        *ngIf="
+          registerForm.hasError('mismatch') &&
+          registerForm.get('confirmPassword')?.touched
+        "
+        class="error-message"
+      >
+        <svg
+          width="25"
+          height="24"
+          viewBox="0 0 25 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style="display: inline-block"
+        >
+          <circle cx="12.0267" cy="12" r="12" fill="#24221E" />
+          <path
+            d="M13.945 17.5647C13.945 18.6187 13.1019 19.4829 12.0269 19.4829C10.9518 19.4829 10.1087 18.6187 10.1087 17.5647C10.1087 16.5108 10.9519 15.6466 12.0269 15.6466C13.1018 15.6466 13.945 16.5108 13.945 17.5647ZM12.9059 13.7284H11.1278C10.8642 13.7284 10.6473 13.5212 10.6352 13.2579L10.2588 5.03276C10.2459 4.75188 10.4702 4.51709 10.7514 4.51709H13.3011C13.5828 4.51709 13.8072 4.75257 13.7937 5.03389L13.3984 13.259C13.3858 13.5218 13.169 13.7284 12.9059 13.7284Z"
+            fill="white"
+          />
+        </svg>
 
+        Password does not match
+      </p>
       <p class="fs-small text-gray-1400">
         The password should be at least eight characters long. To make it
         stronger, use upper and lower case letters, numbers, and symbols like !

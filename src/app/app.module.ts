@@ -26,7 +26,7 @@ import { TransferMoneyComponent } from './account/transfer-money/transfer-money.
     NavbarComponent,
     HeroSectionComponent,
     CurrencyDropdownComponent,
-    TransferMoneyComponent
+    TransferMoneyComponent,
   ],
   imports: [
     BrowserModule,

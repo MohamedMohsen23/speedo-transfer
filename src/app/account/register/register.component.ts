@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['']);
     } else {
       console.log('Form is invalid');
-      this.registerForm.markAllAsTouched(); 
+      this.registerForm.markAllAsTouched();
     }
   }
 
