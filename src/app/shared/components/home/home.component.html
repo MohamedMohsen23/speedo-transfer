@@ -1,4 +1,6 @@
-
 <app-navbar></app-navbar>
-<app-hero-section></app-hero-section>
+<app-hero-section *ngIf="currentRoute === '/'"></app-hero-section>
 <router-outlet></router-outlet>
+<app-getting-started *ngIf="currentRoute === '/'"></app-getting-started>
+<app-mobile-application></app-mobile-application>
+<app-footer></app-footer>

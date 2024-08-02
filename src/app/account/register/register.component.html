@@ -20,22 +20,21 @@
 </div>
 
 <div class="max-w-lg mx-auto bg-white p-8 shadow-xl rounded-lg mt-20 mb-20">
-  <h1 class="text-fs-md-title font-semibold mb-2 text-gray-1800">Create Your Account</h1>
-  <p class="text-gray-1400 mb-4 fs-body">
+  <h1 class="text-2xl font-bold mb-4 text-gray-1800">Create Your Account</h1>
+  <p class="text-gray-1400 mb-4">
     Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor
     incididunt ut labore.
   </p>
   <div class="max-w-lg mx-auto bg-white p-8 shadow-md rounded-lg">
-    <form  (ngSubmit)="onSubmit()" class="space-y-4">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-4">
       <!-- Name -->
       <div class="mb-4">
-        <label for="name" class="block text-gray-1600  mb-2 fs-body"
+        <label for="name" class="block text-gray-1600 font-bold mb-2"
           >User name</label
         >
         <input
           type="text"
           id="name"
-          width="501px"
           formControlName="name"
           class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="User name"
@@ -52,7 +51,7 @@
 
       <!-- Email -->
       <div class="mb-4">
-        <label for="email" class="block text-gray-1600 fs-body mb-2"
+        <label for="email" class="block text-gray-1600 font-bold mb-2"
           >Email address</label
         >
         <input
@@ -74,7 +73,7 @@
 
       <!-- Country -->
       <div class="mb-4">
-        <label for="country" class="block text-gray-1600 fs-body mb-2"
+        <label for="country" class="block text-gray-1600 font-bold mb-2"
           >Country</label
         >
         <select
@@ -100,13 +99,13 @@
 
       <!-- Date of Birth Fields -->
       <div class="mb-4">
-        <label class="block text-gray-1700 text-sm fs-body mb-2" for="dob"
+        <label class="block text-gray-1700 text-sm font-bold mb-2" for="dob"
           >Date of Birth</label
         >
         <div class="flex space-x-2">
           <div class="relative w-1/3">
             <label
-              class="block mb-1 text-gray-1600 text-sm fs-body"
+              class="block mb-1 text-gray-1600 text-sm font-bold"
               for="dob-day"
               >Day</label
             >
@@ -130,7 +129,7 @@
           </div>
           <div class="relative w-1/3">
             <label
-              class="block mb-1 text-gray-1600 text-sm fs-body"
+              class="block mb-1 text-gray-1600 text-sm font-bold"
               for="dob-month"
               >Month</label
             >
@@ -164,7 +163,7 @@
           </div>
           <div class="relative w-1/3">
             <label
-              class="block mb-1 text-gray-1600 text-sm fs-body"
+              class="block mb-1 text-gray-1600 text-sm font-bold"
               for="dob-year"
               >Year</label
             >
@@ -191,16 +190,95 @@
 
       <!-- Password Field -->
       <div class="relative mb-4">
-        <label for="password" class="block text-gray-1600 fs-body mb-2"
+        <label for="password" class="block text-gray-1600 font-bold mb-2"
           >Password</label
         >
         <input
-          [type]="isPasswordVisible ? 'password' : 'text'"
+          [type]="showPassword ? 'password' : 'text'"
           id="password"
           formControlName="password"
           class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Enter your password"
         />
+        <svg
+          *ngIf="showPassword"
+          (click)="toggleShowPassword()"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="absolute right-2 top-8 sm:right-4 sm:top-10 cursor-pointer"
+        >
+          <path
+            d="M15.58 12C15.58 13.98 13.98 15.58 12 15.58C10.02 15.58 8.42 13.98 8.42 12C8.42 10.02 10.02 8.41998 12 8.41998C13.98 8.41998 15.58 10.02 15.58 12Z"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12 20.27C15.53 20.27 18.82 18.19 21.11 14.59C22.01 13.18 22.01 10.81 21.11 9.39997C18.82 5.79997 15.53 3.71997 12 3.71997C8.47 3.71997 5.18 5.79997 2.89 9.39997C1.99 10.81 1.99 13.18 2.89 14.59C5.18 18.19 8.47 20.27 12 20.27Z"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <svg
+          *ngIf="!showPassword"
+          (click)="toggleShowPassword()"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="absolute right-2 top-8 sm:right-4 sm:top-10 cursor-pointer"
+        >
+          <path
+            d="M14.53 9.46998L9.47 14.53C8.82 13.88 8.42 12.99 8.42 12C8.42 10.02 10.02 8.41998 12 8.41998C12.99 8.41998 13.88 8.81998 14.53 9.46998Z"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M17.82 5.76998C16.07 4.44998 14.07 3.72998 12 3.72998C8.47 3.72998 5.18 5.80998 2.89 9.40998C1.99 10.82 1.99 13.19 2.89 14.6C3.68 15.84 4.6 16.91 5.6 17.77"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8.42 19.53C9.56 20.01 10.77 20.27 12 20.27C15.53 20.27 18.82 18.19 21.11 14.59C22.01 13.18 22.01 10.81 21.11 9.39999C20.78 8.87999 20.42 8.38999 20.05 7.92999"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M15.51 12.7C15.25 14.11 14.1 15.26 12.69 15.52"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M9.47 14.53L2 22"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M22 2L14.53 9.47"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
         <div
           *ngIf="
             registerForm.get('password')?.invalid &&
@@ -209,27 +287,17 @@
         >
           <p class="text-red-500 text-sm">Password is required</p>
         </div>
-        <button
-          type="button"
-          (click)="togglePasswordVisibility('password')"
-          class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-700"
-        >
-          <i
-            [class]="isPasswordVisible ? 'fas fa-eye-slash' : 'fas fa-eye'"
-            class="mt-7"
-          ></i>
-        </button>
       </div>
 
       <!-- Confirm Password Field -->
       <div class="relative mb-6">
         <label
           for="confirm-password"
-          class="block text-gray-1600 fs-body mb-2"
+          class="block text-gray-1600 font-bold mb-2"
           >Confirm Password</label
         >
         <input
-          [type]="isConfirmPasswordVisible ? 'password' : 'text'"
+          [type]="showPassword ? 'password' : 'text'"
           id="confirm-password"
           formControlName="confirmPassword"
           class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -243,21 +311,88 @@
         >
           <p class="text-red-500 text-sm">Confirm Password is required</p>
         </div>
-        <button
-          type="button"
-          (click)="togglePasswordVisibility('confirm-password')"
-          class="absolute inset-y-0 right-0 flex items-center px-3 text-gray-700"
+        <svg
+          *ngIf="showConfirmPassword"
+          (click)="toggleShowConfirmPassword()"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="absolute right-2 top-8 sm:right-4 sm:top-10 cursor-pointer"
         >
-          <i
-            [class]="
-              isConfirmPasswordVisible ? 'fas fa-eye-slash' : 'fas fa-eye'
-            "
-            class="mt-7"
-          ></i>
-        </button>
+          <path
+            d="M15.58 12C15.58 13.98 13.98 15.58 12 15.58C10.02 15.58 8.42 13.98 8.42 12C8.42 10.02 10.02 8.41998 12 8.41998C13.98 8.41998 15.58 10.02 15.58 12Z"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12 20.27C15.53 20.27 18.82 18.19 21.11 14.59C22.01 13.18 22.01 10.81 21.11 9.39997C18.82 5.79997 15.53 3.71997 12 3.71997C8.47 3.71997 5.18 5.79997 2.89 9.39997C1.99 10.81 1.99 13.18 2.89 14.59C5.18 18.19 8.47 20.27 12 20.27Z"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <svg
+          *ngIf="!showConfirmPassword"
+          (click)="toggleShowConfirmPassword()"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="absolute right-2 top-8 sm:right-4 sm:top-10 cursor-pointer"
+        >
+          <path
+            d="M14.53 9.46998L9.47 14.53C8.82 13.88 8.42 12.99 8.42 12C8.42 10.02 10.02 8.41998 12 8.41998C12.99 8.41998 13.88 8.81998 14.53 9.46998Z"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M17.82 5.76998C16.07 4.44998 14.07 3.72998 12 3.72998C8.47 3.72998 5.18 5.80998 2.89 9.40998C1.99 10.82 1.99 13.19 2.89 14.6C3.68 15.84 4.6 16.91 5.6 17.77"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8.42 19.53C9.56 20.01 10.77 20.27 12 20.27C15.53 20.27 18.82 18.19 21.11 14.59C22.01 13.18 22.01 10.81 21.11 9.39999C20.78 8.87999 20.42 8.38999 20.05 7.92999"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M15.51 12.7C15.25 14.11 14.1 15.26 12.69 15.52"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M9.47 14.53L2 22"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M22 2L14.53 9.47"
+            stroke="#3B3936"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
       </div>
 
-      <p class="fs-small text-gray-1400">
+      <p class="text-sm text-gray-1400">
         The password should be at least eight characters long. To make it
         stronger, use upper and lower case letters, numbers, and symbols like !
         " ? $ % ^ & )
@@ -273,7 +408,7 @@
         </button>
       </div>
 
-      <p class="text-gray-1400 fs-body">
+      <p class="text-gray-1400">
         Already have an account?
         <a
           routerLink="/login"

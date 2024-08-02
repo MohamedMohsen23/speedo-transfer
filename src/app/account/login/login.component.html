@@ -1,3 +1,24 @@
+<div class="flex items-center justify-between w-full pr-4 pt-6 px-5">
+  <h1 class="text-2xl font-bold text-gray-1800 ml-8">Speedo Transfer</h1>
+  <a class="flex items-center" routerLink="/">
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M9.01 22.99L16.001 16L22.99 22.99M22.99 9.00902L16 16L9.01 9.00902"
+        stroke="#24221E"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </a>
+</div>
+
 <div class="flex flex-col my-10 justify-between items-center">
   <p class="text-fs-md-title font-semibold mb-2">Login</p>
   <p class="text-gray-1400 mb-0 sm:mb-10">
@@ -15,28 +36,77 @@
       Welcom back.Login to your account
     </p>
 
-    <form action="">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="flex flex-col gap-2 mb-5">
         <label class="text-gray-1600 text-fs-small sm:text-base" for="email"
           >Your Email Address</label
         >
         <input
+          formControlName="email"
           id="email"
           type="email"
           placeholder="Email@gmail.com"
           class="input"
         />
+        <div
+          *ngIf="
+            loginForm.get('email')?.invalid &&
+            !loginForm.get('email')?.value &&
+            (loginForm.get('email')?.touched || loginForm.dirty)
+          "
+        >
+          <p class="text-red-500 text-sm">Email is required</p>
+        </div>
+        <div
+          *ngIf="
+            loginForm.get('email')?.invalid &&
+            loginForm.get('email')?.errors?.['email'] &&
+            (loginForm.get('email')?.touched || loginForm.dirty)
+          "
+        >
+          <p class="text-red-500 text-sm">
+            Please Enter an Email With &commat;
+          </p>
+        </div>
       </div>
       <div class="flex flex-col relative gap-2">
         <label class="text-gray-1600 text-fs-small sm:text-base" for="password"
           >Password</label
         >
         <input
+          formControlName="password"
           id="password"
           [type]="showPassword ? 'text' : 'password'"
           placeholder="************"
-          class="input mb-5"
+          class="input mb-2"
         />
+        <div
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            !loginForm.get('password')?.value &&
+            (loginForm.get('password')?.touched || loginForm.dirty)
+          "
+        >
+          <p class="text-red-500 text-sm">Password is required</p>
+        </div>
+        <div
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.errors?.['minlength'] &&
+            (loginForm.get('password')?.touched || loginForm.dirty)
+          "
+        >
+          <p class="text-red-500 text-sm">Minimum Length 3 Characters</p>
+        </div>
+        <div
+          *ngIf="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.errors?.['maxlength'] &&
+            (loginForm.get('password')?.touched || loginForm.dirty)
+          "
+        >
+          <p class="text-red-500 text-sm">Maxmimum Length 16 Characters</p>
+        </div>
         <svg
           *ngIf="showPassword"
           (click)="toggleShowPassword()"
@@ -128,9 +198,10 @@
       >
     </p>
   </div>
-  <div
-    class="absolute bottom-[-15rem] w-full h-[56px] flex justify-center items-center bg-primary-100"
-  >
-    <p>©Speedo Transfer Payments Limited 2024</p>
-  </div>
+</div>
+
+<div class="footer mt-20">
+  <p class="text-gray-140 text-center py-3 bg-pink-50">
+    &copy; Speedo Transfer Payments Limited 2024
+  </p>
 </div>

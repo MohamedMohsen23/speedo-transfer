@@ -6,6 +6,7 @@ import { LoginComponent } from './account/login/login.component';
 import { LogoutComponent } from './account/logout/logout.component';
 import { RegisterComponent } from './account/register/register.component';
 import { TransferMoneyComponent } from './account/transfer-money/transfer-money.component';
+import { MyAccountComponent } from './account/my-account/my-account.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
         path: 'transfer-money',
         component: TransferMoneyComponent,
       },
+      { path: 'my-account', component: MyAccountComponent },
     ],
   },
   { path: 'login', component: LoginComponent },
