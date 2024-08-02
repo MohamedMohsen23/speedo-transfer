@@ -8,18 +8,16 @@ import { filter } from 'rxjs';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  currentRoute = '/';
-
+  currentRoute = '';
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    // console.log(this.currentRoute);
+    this.currentRoute = this.router.url;
 
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.currentRoute = event.url;
-        // console.log(this.currentRoute);
       });
   }
 }
