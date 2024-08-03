@@ -1,8 +1,10 @@
 <nav
   class="sm:h-[91px] w-full flex flex-col sm:flex-row sm:justify-around sm:items-center"
 >
-  <div class="flex items-center justify-around">
-    <h1 class="text-fs-p sm:text-fs-sm-title font-semibold">Speedo Transfer</h1>
+  <div class="flex items-center py-3 sm:py-0 justify-around">
+    <h1 class="mr-20 sm:mr-0 text-fs-p sm:text-fs-sm-title font-semibold">
+      Speedo Transfer
+    </h1>
     <svg
       class="block sm:hidden"
       (click)="toggleNavbar()"
@@ -55,9 +57,7 @@
       >My Account</a
     >
   </div>
-  <div
-    class="hidden sm:flex flex-col items-center sm:flex-row gap-2 sm:gap-3 mt-2 sm:mt-0"
-  >
+  <div class="hidden sm:flex flex-col items-center sm:flex-row gap-2 sm:gap-3">
     <a
       routerLink="/login"
       class="border border-gray-1400 px-5 py-2 rounded-md font-medium hover:bg-primary-500 hover:text-white transition-colors delay-150 text-center sm:text-left"
@@ -72,7 +72,7 @@
   <!-- Navbar For Small Devices -->
   <div
     *ngIf="showNavbar"
-    class="flex sm:hidden flex-col sm:flex-row gap-2 sm:gap-4 font-medium"
+    class="flex sm:hidden flex-col sm:flex-row gap-2 items-start px-10 sm:gap-4 mt-3 font-medium"
   >
     <a
       routerLink=""
@@ -98,7 +98,7 @@
   </div>
   <div
     *ngIf="showNavbar"
-    class="flex sm:hidden flex-col items-center sm:flex-row gap-2 sm:gap-3 mt-2 sm:mt-0"
+    class="flex sm:hidden flex-col items-start px-10 sm:flex-row gap-2 sm:gap-3 mt-3 sm:mt-0"
   >
     <a
       routerLink="/login"

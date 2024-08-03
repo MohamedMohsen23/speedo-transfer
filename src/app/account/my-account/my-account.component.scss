@@ -1,0 +1,35 @@
+.my-account {
+  position: relative;
+  height: 404px;
+  gap: 0px;
+  display: flex;
+}
+
+.my-account .background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("/assets/img/Breadcrumb_img.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 5%;
+  z-index: -1;
+}
+
+.list-item::before {
+  content: "• ";
+  color: black;
+  margin-right: 0.5rem;
+}
+
+.active-btn {
+  background-color: #871e35;
+  color: #fff;
+}
+
+.active-setting {
+  border-bottom: 2px solid #871e35;
+  color: #871e35;
+}

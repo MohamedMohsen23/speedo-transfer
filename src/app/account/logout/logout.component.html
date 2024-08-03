@@ -116,7 +116,7 @@
           *ngIf="
             logoutForm.get('password')?.invalid &&
             !logoutForm.get('password')?.value &&
-            (logoutForm.get('password')?.touched || logoutForm.dirty)
+            logoutForm.get('password')?.touched
           "
         >
           <p class="text-red-500 text-sm">Password is required</p>
