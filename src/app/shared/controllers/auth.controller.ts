@@ -32,4 +32,10 @@ export class AuthController {
     );
     this.router.navigate(['/login']);
   }
+
+  login(email: string, password: string) {
+   this.api.post(`${this.BASE_URL}/login`, { email, password });
+    this.isAuthenticated = true;
+    this.router.navigate(['/']);
+  }
 }

@@ -16,4 +16,7 @@ export class authService {
   register(userData: RegisterUserData) {
     this.authController.register(userData);
   }
+  login(email: string, password: string) {
+    this.authController.login(email, password);
+  }
 }
