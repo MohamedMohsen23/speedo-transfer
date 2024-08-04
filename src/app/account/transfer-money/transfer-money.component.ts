@@ -14,7 +14,17 @@ export class TransferMoneyComponent {
   recipientGets: string = '';
   recipientName: string = '';
   recipientAccount: string = '';
+  countryOptionOne = 'USD';
+  countryOptionTwo = 'USD';
+  onClickOptionOne(currentOption: string) {
+    this.countryOptionOne = currentOption;
+    this.showOptionOne = false;
+  }
 
+  onClickOptionTwo(currentOption: string) {
+    this.countryOptionTwo = currentOption;
+    this.showOptionTwo = false;
+  }
   toggleOptions() {
     this.showOptionOne = !this.showOptionOne;
   }
