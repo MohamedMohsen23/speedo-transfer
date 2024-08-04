@@ -29,7 +29,7 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-     this.authService.login(email, password);
+      this.authService.login(email, password);
     } else {
       console.log('Form is invalid');
       this.loginForm.markAllAsTouched();
