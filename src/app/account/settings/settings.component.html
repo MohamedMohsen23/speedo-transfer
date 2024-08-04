@@ -1,0 +1,181 @@
+<div>
+  <p class="font-semibold text-fs-xs-title mb-8">Settings</p>
+  <div class="flex gap-5 font-semibold text-fs-p text-gray-1200">
+    <button
+      (click)="onClickSetting('profile')"
+      class="pb-2 border-b-2 border-white"
+      [ngClass]="activeSetting === 'profile' ? 'active-setting' : ''"
+    >
+      Profile
+    </button>
+    <button
+      (click)="onClickSetting('change-password')"
+      class="pb-2 border-b-2 border-white"
+      [ngClass]="activeSetting === 'change-password' ? 'active-setting' : ''"
+    >
+      Change Password
+    </button>
+  </div>
+
+  <form
+    (ngSubmit)="settingsFormSubmit()"
+    [formGroup]="settingsForm"
+    *ngIf="activeSetting === 'profile'"
+    class="grid grid-cols-1 sm:grid-cols-2 mt-10 gap-10"
+  >
+    <div class="flex flex-col gap-3">
+      <label for="">User name</label>
+      <input class="setting-input" type="text" formControlName="userName" />
+      <div
+        *ngIf="
+          settingsForm.get('userName')?.invalid &&
+          !settingsForm.get('userName')?.value &&
+          (settingsForm.get('userName')?.touched || settingsForm.dirty)
+        "
+      >
+        <p class="text-red-500 text-sm">User name is required</p>
+      </div>
+    </div>
+    <div class="flex flex-col gap-3">
+      <label for="">Last name</label>
+      <input type="text" class="setting-input" formControlName="lastName" />
+      <div
+        *ngIf="
+          settingsForm.get('lastName')?.invalid &&
+          !settingsForm.get('lastName')?.value &&
+          (settingsForm.get('lastName')?.touched || settingsForm.dirty)
+        "
+      >
+        <p class="text-red-500 text-sm">Last name is required</p>
+      </div>
+    </div>
+    <div class="flex flex-col gap-3">
+      <label for="">Phone</label>
+      <input type="phone" class="setting-input" formControlName="phone" />
+      <div
+        *ngIf="
+          settingsForm.get('phone')?.invalid &&
+          !settingsForm.get('phone')?.value &&
+          (settingsForm.get('phone')?.touched || settingsForm.dirty)
+        "
+      >
+        <p class="text-red-500 text-sm">Phone is required</p>
+      </div>
+      <div
+        *ngIf="
+            settingsForm.get('phone')?.invalid &&
+            settingsForm.get('phone')?.value&&
+            settingsForm.get('phone')?.errors?.['numericOnly'] &&
+            (settingsForm.get('phone')?.touched || settingsForm.dirty)
+          "
+      >
+        <p class="text-red-500 text-sm">Please Enter Numbers</p>
+      </div>
+    </div>
+    <div class="flex flex-col gap-3">
+      <label for="">Email</label>
+      <input type="email" class="setting-input" formControlName="email" />
+      <div
+        *ngIf="
+          settingsForm.get('email')?.invalid &&
+          !settingsForm.get('email')?.value &&
+          (settingsForm.get('email')?.touched || settingsForm.dirty)
+        "
+      >
+        <p class="text-red-500 text-sm">Email is required</p>
+      </div>
+      <div
+        *ngIf="
+          settingsForm.get('email')?.invalid &&
+          settingsForm.get('email')?.errors?.['email'] &&
+          (settingsForm.get('email')?.touched || settingsForm.dirty)
+        "
+      >
+        <p class="text-red-500 text-sm">Please Enter an Email With &commat;</p>
+      </div>
+    </div>
+    <button
+      class="w-[174px] h-[56px] bg-primary-500 font-medium text-white rounded-md"
+    >
+      Update Profile
+    </button>
+  </form>
+
+  <form
+    (ngSubmit)="changePasswordFormSubmit()"
+    [formGroup]="changePasswordForm"
+    *ngIf="activeSetting === 'change-password'"
+    class="grid grid-cols-1 sm:grid-cols-2 mt-10 gap-10"
+  >
+    <div class="flex flex-col gap-3">
+      <label for="">Current Password</label>
+      <input
+        type="password"
+        class="setting-input"
+        placeholder="Type Here"
+        formControlName="currentPassword"
+      />
+      <div
+        *ngIf="
+          changePasswordForm.get('currentPassword')?.invalid &&
+          !changePasswordForm.get('currentPassword')?.value &&
+          (changePasswordForm.get('currentPassword')?.touched ||
+            changePasswordForm.dirty)
+        "
+      >
+        <p class="text-red-500 text-sm">Current Password is required</p>
+      </div>
+      <div
+        *ngIf="
+          changePasswordForm.get('currentPassword')?.invalid &&
+          changePasswordForm.get('currentPassword')?.errors?.['minlength'] &&
+          (changePasswordForm.get('currentPassword')?.touched || changePasswordForm.dirty)
+        "
+      >
+        <p class="text-red-500 text-sm">Minimum Length 3 Characters</p>
+      </div>
+      <div
+        *ngIf="
+        changePasswordForm.get('currentPassword')?.invalid &&
+        changePasswordForm.get('currentPassword')?.errors?.['maxlength'] &&
+          (changePasswordForm.get('currentPassword')?.touched || changePasswordForm.dirty)
+        "
+      >
+        <p class="text-red-500 text-sm">Maxmimum Length 16 Characters</p>
+      </div>
+    </div>
+    <div class="flex flex-col gap-3">
+      <label for="">New Password</label>
+      <input
+        type="password"
+        class="setting-input"
+        placeholder="Type Here"
+        formControlName="newPassword"
+      />
+      <div
+        *ngIf="
+          changePasswordForm.get('newPassword')?.invalid &&
+          !changePasswordForm.get('newPassword')?.value &&
+          (changePasswordForm.get('newPassword')?.touched ||
+            changePasswordForm.dirty)
+        "
+      >
+        <p class="text-red-500 text-sm">New Password is required</p>
+      </div>
+      <div
+        *ngIf="
+        changePasswordForm.get('newPassword')?.invalid &&
+        changePasswordForm.get('newPassword')?.errors?.['maxlength'] &&
+          (changePasswordForm.get('newPassword')?.touched || changePasswordForm.dirty)
+        "
+      >
+        <p class="text-red-500 text-sm">Maxmimum Length 16 Characters</p>
+      </div>
+    </div>
+    <button
+      class="w-[174px] h-[56px] bg-primary-500 font-medium text-white rounded-md"
+    >
+      Update Password
+    </button>
+  </form>
+</div>

@@ -37,14 +37,14 @@
         <input
           type="text"
           id="name"
-          formControlName="name"
+          formControlName="userName"
           class="w-full px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="User name"
         />
         <div
           *ngIf="
-            registerForm.get('name')?.invalid &&
-            registerForm.get('name')?.touched
+            registerForm.get('userName')?.invalid &&
+            registerForm.get('userName')?.touched
           "
         >
           <p class="text-red-500 text-sm mt-3">User name is required</p>
