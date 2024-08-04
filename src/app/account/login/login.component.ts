@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { authService } from '../../shared/services/auth.service';
 
 @Component({
@@ -12,7 +11,7 @@ export class LoginComponent {
   loginForm: FormGroup;
   showPassword = false;
 
-  constructor(private authService: authService, private router: Router) {
+  constructor(private authService: authService) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
@@ -29,7 +28,7 @@ export class LoginComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-     this.authService.login(email, password);
+      this.authService.login(email, password);
     } else {
       console.log('Form is invalid');
       this.loginForm.markAllAsTouched();

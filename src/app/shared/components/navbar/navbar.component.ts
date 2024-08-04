@@ -1,7 +1,14 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { AuthController } from '../../controllers/auth.controller';
 import { User } from '../../models/user.model';
 import { ScrollService } from '../../services/scroll.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -52,11 +59,15 @@ export class NavbarComponent implements OnInit {
       country: this.authController.user?.country ?? '',
       dataOfBirth: this.authController.user?.dataOfBirth ?? '',
     };
+    // this.authController.getCurrentUser();
   }
 
-  @ViewChild('targetElement') targetElement!: ElementRef;
+  scrollTo(elementId: string) {
+    this.scrollService.setScrollElement(elementId);
+    this.showUserSettings = false;
+  }
 
-  scrollToSecitions(): void {
-    this.scrollService.scrollToElement();
+  onClickLogout() {
+    this.authController.logout();
   }
 }
