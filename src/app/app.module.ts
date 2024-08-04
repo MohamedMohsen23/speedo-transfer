@@ -19,6 +19,11 @@ import { GettingStartedComponent } from './shared/components/getting-started/get
 import { MobileApplicationComponent } from './shared/components/mobile-application/mobile-application.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { MyAccountComponent } from './account/my-account/my-account.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MyProfileComponent } from './account/my-profile/my-profile.component';
+import { PaymentsHistoryComponent } from './account/payments-history/payments-history.component';
+import { SettingsComponent } from './account/settings/settings.component';
+import { ChangePasswordComponent } from './account/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -36,9 +41,21 @@ import { MyAccountComponent } from './account/my-account/my-account.component';
     MobileApplicationComponent,
     FooterComponent,
     MyAccountComponent,
+    MyProfileComponent,
+    PaymentsHistoryComponent,
+    SettingsComponent,
+    ChangePasswordComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+
+  ],
+
   providers: [provideHttpClient()],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}
