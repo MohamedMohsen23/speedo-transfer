@@ -60,16 +60,20 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     if (this.registerForm.valid) {
-      console.log('Form Submitted');
-
       this.authService.register({
         userName: this.registerForm.value.userName,
         email: this.registerForm.value.email,
         password: this.registerForm.value.password,
         country: this.registerForm.value.country,
-        dateOfBirth: `${this.registerForm.value.dobMonth}/${this.registerForm.value.dobDay}/${this.registerForm.value.dobYear}`,
+        dateOfBirth: `${this.registerForm.value.dobYear}-${
+          this.registerForm.value.dobMonth < 10 ? '0' : ''
+        }${this.registerForm.value.dobMonth}-${
+          this.registerForm.value.dobDay < 10 ? '0' : ''
+        }${this.registerForm.value.dobDay}`,
         gender: 'male',
       });
+
+      console.log('Form Submitted');
     } else {
       console.log('Form is invalid');
       this.registerForm.markAllAsTouched();

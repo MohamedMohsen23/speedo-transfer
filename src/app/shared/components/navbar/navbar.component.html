@@ -75,13 +75,13 @@
   <!-- class="w-[241px] h-[382px]" -->
   <div
     (click)="toggleUserSettings()"
-    *ngIf="!isEmpty()"
+    *ngIf="isEmpty()"
     class="font-semibold text-gray-1600 flex items-center gap-3 cursor-pointer relative"
   >
     <p
       class="text-fs-xs-title bg-gray-500 rounded-full p-6 w-[24px] h-[24px] flex justify-center items-center"
     >
-      {{ firstName }}{{ lastName }}
+      {{ "Y" }}{{ lastName }}
     </p>
     <p class="text-fs-p">{{ currentUser?.username }}</p>
     <svg
@@ -99,31 +99,34 @@
   </div>
 
   <div
-    *ngIf="true"
+    *ngIf="showUserSettings"
     class="font-medium text-gray-1600 w-[241px] h-[320px] absolute bg-white right-[51px] top-[91px] z-30 shadow-lg flex flex-col gap-5 justify-around"
   >
     <a
-      (click)="scrollToSecitions()"
+      (click)="toggleUserSettings()"
       routerLink="/my-account"
       class="mx-5 pb-5 border-b-2 cursor-pointer"
       >My Account</a
     >
     <a
+      (click)="scrollTo('targetElement')"
       routerLink="/my-account/payments-history"
       class="mx-5 pb-5 border-b-2 cursor-pointer"
       >Payment History</a
     >
     <a
+      (click)="scrollTo('targetElement')"
       routerLink="/my-account/settings"
       class="mx-5 pb-5 border-b-2 cursor-pointer"
       >Settings</a
     >
     <a
+      (click)="scrollTo('targetElement')"
       routerLink="/my-account/change-password"
       class="mx-5 pb-5 border-b-2 cursor-pointer"
       >Change Password</a
     >
-    <a class="mx-5 pb-5 cursor-pointer">Logout</a>
+    <a (click)="onClickLogout()" class="mx-5 pb-5 cursor-pointer">Logout</a>
   </div>
 
   <!-- Navbar For Small Devices -->
