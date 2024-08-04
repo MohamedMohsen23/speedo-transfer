@@ -36,7 +36,7 @@
       Welcom back.Login to your account
     </p>
 
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" method="post">
       <div class="flex flex-col gap-2 mb-5">
         <label class="text-gray-1600 text-fs-small sm:text-base" for="email"
           >Your Email Address</label
@@ -47,6 +47,7 @@
           type="email"
           placeholder="Email@gmail.com"
           class="input"
+          formControlName="email"
         />
         <div
           *ngIf="
@@ -79,6 +80,7 @@
           [type]="showPassword ? 'text' : 'password'"
           placeholder="************"
           class="input mb-2"
+          formControlName="password"
         />
         <div
           *ngIf="
@@ -96,7 +98,7 @@
             (loginForm.get('password')?.touched || loginForm.dirty)
           "
         >
-          <p class="text-red-500 text-sm">Minimum Length 3 Characters</p>
+          <p class="text-red-500 text-sm">Minimum Length 8 Characters</p>
         </div>
         <div
           *ngIf="

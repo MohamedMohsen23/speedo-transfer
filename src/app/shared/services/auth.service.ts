@@ -5,9 +5,11 @@ import {
   RegisterUserData,
 } from '../controllers/auth.controller';
 
+
 @Injectable({
   providedIn: 'root',
 })
+
 export class authService {
   constructor(private authController: AuthController) {}
 

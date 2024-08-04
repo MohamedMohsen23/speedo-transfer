@@ -11,17 +11,14 @@ export class TransferMoneyComponent {
   amount: number = 0;
   currentStep = 1;
   sendAmount: string = '';
-  recipientGets: string ='';
-  recipientName: string ='';
-  recipientAccount: string ='';
-
-
- 
+  recipientGets: string = '';
+  recipientName: string = '';
+  recipientAccount: string = '';
 
   toggleOptions() {
     this.showOptionOne = !this.showOptionOne;
   }
-  
+
   toggleShowOptionOne() {
     this.showOptionOne = !this.showOptionOne;
     this.showOptionTwo = false;
