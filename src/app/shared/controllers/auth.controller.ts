@@ -98,5 +98,4 @@ export class AuthController {
 
   getToken(): string | null {
     return this.token;
-  }
 }

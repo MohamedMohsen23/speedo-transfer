@@ -1,8 +1,9 @@
 .Money_transfer {
   position: relative;
-  height: 404px;
-  gap: 0px;
+  min-height: 404px;
   display: flex;
+  flex-wrap: wrap;
+  padding: 0 1rem;
 }
 
 .Money_transfer .background {
@@ -18,13 +19,6 @@
   z-index: -1;
 }
 
-.list-item::before {
-  content: "• ";
-  color: black;
-  margin-right: 0.5rem;
-}
-
-//
 .text-left {
   text-align: left;
 }
@@ -36,6 +30,7 @@
 svg {
   fill: currentColor;
 }
+
 input {
   border: 1px solid #b0afae;
 }
@@ -50,6 +45,67 @@ input {
 .feesPrice {
   background-color: #e3e2e2;
   padding: 4px 20px;
-  margin-left: 18rem;
   border-radius: 20px;
+}
+
+.lineUp1 {
+  padding-left: 60px;
+}
+
+@media (max-width: 630px) {
+  input {
+    height: 55px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .warp {
+    flex-wrap: wrap;
+  }
+
+  input,
+  button {
+    width: 300px;
+  }
+
+  .flex-1 {
+    flex: 1;
+  }
+
+  .Money_transfer {
+    padding: 0;
+  }
+
+  .lineUp {
+    width: 300px;
+    margin-left: 15px;
+  }
+
+  .lineUp1 {
+    padding-left: 15px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  input {
+    height: 48px;
+    font-size: 14px;
+  }
+
+  button {
+    height: 48px;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 641px) {
+  input {
+    height: 56px;
+    font-size: 16px;
+  }
+
+  button {
+    height: 56px;
+    font-size: 16px;
+  }
 }
