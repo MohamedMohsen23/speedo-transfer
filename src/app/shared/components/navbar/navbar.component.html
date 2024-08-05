@@ -76,7 +76,7 @@
   <div
     (click)="toggleUserSettings()"
     *ngIf="isLoggedIn()"
-    class="font-semibold text-gray-1600 flex items-center gap-3 cursor-pointer relative"
+    class="hidden sm:flex font-semibold text-gray-1600 items-center gap-3 cursor-pointer relative"
   >
     <p
       class="text-fs-xs-title bg-gray-500 rounded-full p-6 w-[24px] h-[24px] flex justify-center items-center"
@@ -100,7 +100,9 @@
 
   <div
     *ngIf="showUserSettings"
-    class="font-medium text-gray-1600 w-[241px] h-[320px] absolute bg-white right-[51px] top-[91px] z-30 shadow-lg flex flex-col gap-5 justify-around"
+    (click)="$event.stopPropagation()"
+    class="hidden sm:flex font-medium text-gray-1600 w-[241px] h-[320px] absolute bg-white right-[51px] top-[91px] z-30 shadow-lg flex-col gap-5 justify-around"
+    #userSetting
   >
     <a
       (click)="toggleUserSettings()"
@@ -132,32 +134,38 @@
   <!-- Navbar For Small Devices -->
   <div
     *ngIf="showNavbar"
-    class="flex sm:hidden flex-col sm:flex-row gap-2 items-start px-10 sm:gap-4 mt-3 font-medium"
+    class="flex sm:hidden justify-between sm:flex-row gap-2 items-start px-10 sm:gap-4 mt-3 font-medium"
   >
-    <a
-      routerLink=""
-      routerLinkActive="active-nav-link"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="text-center sm:text-left"
-      >Home</a
-    >
-    <a
-      routerLink="/transfer-money"
-      routerLinkActive="active-nav-link"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="text-center sm:text-left"
-      >Money Transfer</a
-    >
-    <a
-      routerLink="/my-account"
-      routerLinkActive="active-nav-link"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="text-center sm:text-left"
-      >My Account</a
-    >
+    <div class="flex flex-col items-start mb-5">
+      <a
+        (click)="hideNavbar()"
+        routerLink=""
+        routerLinkActive="active-nav-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="text-center sm:text-left"
+        >Home</a
+      >
+      <a
+        (click)="hideNavbar()"
+        routerLink="/transfer-money"
+        routerLinkActive="active-nav-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="text-center sm:text-left"
+        >Money Transfer</a
+      >
+      <a
+        (click)="hideNavbar()"
+        routerLink="/my-account"
+        routerLinkActive="active-nav-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="text-center sm:text-left"
+        >My Account</a
+      >
+      <a (click)="onClickLogout()" class="text-center sm:text-left">Logout</a>
+    </div>
   </div>
   <div
-    *ngIf="showNavbar"
+    *ngIf="showNavbar && !isLoggedIn()"
     class="flex sm:hidden flex-col items-start px-10 sm:flex-row gap-2 sm:gap-3 mt-3 sm:mt-0"
   >
     <a

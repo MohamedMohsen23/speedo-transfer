@@ -15,8 +15,10 @@ export class PaymentsHistoryComponent implements OnInit {
     private accountService: AccountService
   ) {}
 
-  copyToCliboard(text: string) {
-    this.clipboardService.copyFromContent(text);
+  copyToCliboard() {
+    this.clipboardService.copyFromContent(
+      this.paymentHistory.recipientCardNumber
+    );
   }
 
   ngOnInit(): void {
