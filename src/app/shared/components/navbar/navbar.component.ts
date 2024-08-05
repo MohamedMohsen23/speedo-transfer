@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { User } from '../../models/user.model';
 import { ScrollService } from '../../services/scroll.service';
 import { AuthService } from '../../services/auth.service';
@@ -9,6 +15,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent implements OnInit {
+  @ViewChild('userSetting') userSetting!: ElementRef;
   currentUser?: User;
   showNavbar = false;
   showUserSettings = false;
@@ -28,6 +35,18 @@ export class NavbarComponent implements OnInit {
 
   isLoggedIn() {
     return this.authService.isLoggedIn();
+  }
+
+  hideNavbar() {
+    this.showNavbar = false;
+  }
+
+  // Handle Click Outside
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    if (!this.userSetting.nativeElement.contains(event.target)) {
+      this.showUserSettings = false;
+    }
   }
 
   get firstName(): string {
@@ -60,7 +79,6 @@ export class NavbarComponent implements OnInit {
 
   onClickLogout() {
     this.authService.logout();
-
     this.showUserSettings = false;
   }
 }
