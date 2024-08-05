@@ -44,7 +44,10 @@ export class NavbarComponent implements OnInit {
   // Handle Click Outside
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event) {
-    if (!this.userSetting.nativeElement.contains(event.target)) {
+    if (
+      this.userSetting &&
+      !this.userSetting.nativeElement.contains(event.target)
+    ) {
       this.showUserSettings = false;
     }
   }
