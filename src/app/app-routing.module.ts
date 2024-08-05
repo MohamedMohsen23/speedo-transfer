@@ -21,24 +21,36 @@ const routes: Routes = [
       {
         path: 'transfer-money',
         component: TransferMoneyComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
       },
       {
         path: 'my-account',
         component: MyAccountComponent,
-         canActivate: [AuthGuard],
+        canActivate: [AuthGuard],
         children: [
           { path: '', component: MyProfileComponent },
-          { path: 'payments-history', component: PaymentsHistoryComponent, canActivate: [AuthGuard]  },
-          { path: 'settings', component: SettingsComponent , canActivate: [AuthGuard] },
-          { path: 'change-password', component: ChangePasswordComponent , canActivate: [AuthGuard] },
+          {
+            path: 'payments-history',
+            component: PaymentsHistoryComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'settings',
+            component: SettingsComponent,
+            canActivate: [AuthGuard],
+          },
+          {
+            path: 'change-password',
+            component: ChangePasswordComponent,
+            canActivate: [AuthGuard],
+          },
         ],
       },
     ],
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'logout', component: LogoutComponent , canActivate: [AuthGuard] },
+  { path: 'logout', component: LogoutComponent },
   { path: '**', component: NotFoundComponent },
 ];
 

@@ -1,27 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { numericOnlyValidator } from './phone.validator';
+import { AccountService } from '../../shared/services/account.service';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
 })
-export class SettingsComponent {
+export class SettingsComponent implements OnInit {
   activeSetting = 'profile';
+  name: string = '';
+  email: string = '';
+  userName: string = this.name.split(' ')[0];
+  lastName: string = this.name.split(' ')[1];
+
+  constructor(private accountService: AccountService) {}
 
   settingsForm: FormGroup = new FormGroup({
-    userName: new FormControl('Jonathon', Validators.required),
-    lastName: new FormControl('Smith', Validators.required),
+    userName: new FormControl(this.userName, Validators.required),
+    lastName: new FormControl(this.lastName, Validators.required),
     phone: new FormControl('+880125412624', [
       Validators.required,
       numericOnlyValidator(),
     ]),
-    email: new FormControl('jhonathonsmith@gmail.com', [
-      Validators.required,
-      Validators.email,
-    ]),
+    email: new FormControl(this.email, [Validators.required, Validators.email]),
   });
+
+  ngOnInit(): void {
+    this.accountService.getCurrentUser().subscribe((data: any) => {
+      this.name = data.name;
+      this.email = data.email;
+    });
+  }
 
   changePasswordForm: FormGroup = new FormGroup({
     currentPassword: new FormControl('', [

@@ -52,6 +52,12 @@ input {
   padding-left: 60px;
 }
 
+.list-item::before {
+  content: "• ";
+  color: black;
+  margin-right: 0.5rem;
+}
+
 @media (max-width: 630px) {
   input {
     height: 55px !important;

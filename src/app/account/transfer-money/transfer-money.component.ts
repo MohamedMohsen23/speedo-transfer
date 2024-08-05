@@ -56,6 +56,7 @@ export class TransferMoneyComponent {
   }
   goToNextStep() {
     this.currentStep++;
+    console.log(this.currentStep);
   }
   get paragraphText(): string {
     switch (this.currentStep) {

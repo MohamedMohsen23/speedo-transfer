@@ -18,11 +18,6 @@
           >
         </li>
         <li class="list-item">
-          <a [routerLink]="" class="hover:text-primary-500 font-medium"
-            >About Us</a
-          >
-        </li>
-        <li class="list-item">
           <a [routerLink]="" class="text-primary-500">{{ paragraphText }}</a>
         </li>
       </ul>
@@ -412,7 +407,7 @@
         >
           02
         </div>
-        <div class="mt-2 text-fs-body text-gray-500">Confirmation</div>
+        <div class="mt-2 text-fs-body">Confirmation</div>
       </div>
       <div class="text-center flex-1">
         <div
@@ -420,7 +415,7 @@
         >
           03
         </div>
-        <div class="mt-2 text-fs-body text-gray-500">Payment</div>
+        <div class="mt-2 text-fs-body">Payment</div>
       </div>
     </div>
 
@@ -445,11 +440,12 @@
 
             <div
               (click)="toggleShowOptionOne()"
-              class="absolute right-[0.03rem] top-[1.75rem] w-[147.47px] h-[54px] bg-gray-500 rounded-md flex items-center justify-around cursor-pointer"
+              class="absolute right-[0.02rem] top-[1.75rem] w-[147.47px] h-[60px] bg-gray-500 rounded-md flex items-center justify-around cursor-pointer"
               style="border-radius: 0px 5px 5px 0px"
             >
               <div class="flex items-center gap-2">
                 <svg
+                  *ngIf="countryOptionOne !== 'EGP'"
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -488,6 +484,39 @@
                     </clipPath>
                   </defs>
                 </svg>
+                <svg
+                  *ngIf="countryOptionOne === 'EGP'"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_2077_23343)">
+                    <path
+                      d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z"
+                      fill="#F0F0F0"
+                    />
+                    <path
+                      d="M8 0C4.56028 0 1.62793 2.171 0.497589 5.21741H15.5024C14.3721 2.171 11.4397 0 8 0V0Z"
+                      fill="#D80027"
+                    />
+                    <path
+                      d="M8 16C11.4397 16 14.3721 13.829 15.5024 10.7826H0.497589C1.62793 13.829 4.56028 16 8 16Z"
+                      fill="black"
+                    />
+                    <path
+                      d="M10.7826 7.13041H8.69563C8.69563 6.74622 8.38416 6.43475 7.99997 6.43475C7.61578 6.43475 7.30432 6.74622 7.30432 7.13041H5.21735C5.21735 7.51463 5.552 7.82607 5.93619 7.82607H5.913C5.913 8.21028 6.22444 8.52172 6.60866 8.52172C6.60866 8.90594 6.9201 9.21738 7.30432 9.21738H8.69563C9.07985 9.21738 9.39128 8.90594 9.39128 8.52172C9.7755 8.52172 10.0869 8.21028 10.0869 7.82607H10.0638C10.448 7.82607 10.7826 7.51463 10.7826 7.13041V7.13041Z"
+                      fill="#FF9811"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_2077_23343">
+                      <rect width="16" height="16" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+
                 <p class="font-medium">{{ countryOptionOne }}</p>
               </div>
 
@@ -690,11 +719,12 @@
 
             <div
               (click)="toggleShowOptionTwo()"
-              class="absolute right-[0.03rem] top-[1.73rem] w-[147.47px] h-[54px] bg-gray-500 rounded-md flex items-center justify-around cursor-pointer"
+              class="absolute right-[0.02rem] top-[1.73rem] w-[147.47px] h-[60px] bg-gray-500 rounded-md flex items-center justify-around cursor-pointer"
               style="border-radius: 0px 5px 5px 0px"
             >
               <div class="flex items-center gap-2">
                 <svg
+                  *ngIf="countryOptionTwo !== 'EGP'"
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -733,6 +763,39 @@
                     </clipPath>
                   </defs>
                 </svg>
+                <svg
+                  *ngIf="countryOptionTwo === 'EGP'"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_2077_23343)">
+                    <path
+                      d="M8 16C12.4183 16 16 12.4183 16 8C16 3.58172 12.4183 0 8 0C3.58172 0 0 3.58172 0 8C0 12.4183 3.58172 16 8 16Z"
+                      fill="#F0F0F0"
+                    />
+                    <path
+                      d="M8 0C4.56028 0 1.62793 2.171 0.497589 5.21741H15.5024C14.3721 2.171 11.4397 0 8 0V0Z"
+                      fill="#D80027"
+                    />
+                    <path
+                      d="M8 16C11.4397 16 14.3721 13.829 15.5024 10.7826H0.497589C1.62793 13.829 4.56028 16 8 16Z"
+                      fill="black"
+                    />
+                    <path
+                      d="M10.7826 7.13041H8.69563C8.69563 6.74622 8.38416 6.43475 7.99997 6.43475C7.61578 6.43475 7.30432 6.74622 7.30432 7.13041H5.21735C5.21735 7.51463 5.552 7.82607 5.93619 7.82607H5.913C5.913 8.21028 6.22444 8.52172 6.60866 8.52172C6.60866 8.90594 6.9201 9.21738 7.30432 9.21738H8.69563C9.07985 9.21738 9.39128 8.90594 9.39128 8.52172C9.7755 8.52172 10.0869 8.21028 10.0869 7.82607H10.0638C10.448 7.82607 10.7826 7.51463 10.7826 7.13041V7.13041Z"
+                      fill="#FF9811"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_2077_23343">
+                      <rect width="16" height="16" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+
                 <p class="font-medium">{{ countryOptionTwo }}</p>
               </div>
 
@@ -1096,7 +1159,7 @@
             />
           </div>
           <button
-            class="bg-primary-500 text-white rounded-md h-[56px] w-[554px]"
+            class="bg-primary-500 text-white rounded-md h-[56px] w-[554px] cursor-pointer"
             [disabled]="transferForm.invalid"
           >
             Continue
@@ -1123,7 +1186,7 @@
         >
           02
         </div>
-        <div class="mt-2 text-fs-body text-gray-500">Confirmation</div>
+        <div class="mt-2 text-fs-body">Confirmation</div>
       </div>
       <div class="text-center flex-1">
         <div
@@ -1131,7 +1194,7 @@
         >
           03
         </div>
-        <div class="mt-2 text-fs-body text-gray-500">Payment</div>
+        <div class="mt-2 text-fs-body">Payment</div>
       </div>
     </div>
 
@@ -1276,7 +1339,7 @@
         >
           02
         </div>
-        <div class="mt-2 text-fs-body text-gray-500">Confirmation</div>
+        <div class="mt-2 text-fs-body">Confirmation</div>
       </div>
       <div class="text-center flex-1">
         <div
@@ -1284,7 +1347,7 @@
         >
           03
         </div>
-        <div class="mt-2 text-fs-body text-gray-500">Payment</div>
+        <div class="mt-2 text-fs-body">Payment</div>
       </div>
     </div>
 
