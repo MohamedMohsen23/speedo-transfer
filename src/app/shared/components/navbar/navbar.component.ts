@@ -26,10 +26,8 @@ export class NavbarComponent implements OnInit {
     this.showUserSettings = !this.showUserSettings;
   }
 
-  isEmpty() {
-    return (
-      this.currentUser?.username === '' && this.currentUser?.password === ''
-    );
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
   }
 
   get firstName(): string {
@@ -52,7 +50,7 @@ export class NavbarComponent implements OnInit {
       country: this.authService.user?.country ?? '',
       dataOfBirth: this.authService.user?.dataOfBirth ?? '',
     };
-    // this.authController.getCurrentUser();
+    // this.authSerivce.getCurrentUser();
   }
 
   scrollTo(elementId: string) {
@@ -62,5 +60,7 @@ export class NavbarComponent implements OnInit {
 
   onClickLogout() {
     this.authService.logout();
+
+    this.showUserSettings = false;
   }
 }

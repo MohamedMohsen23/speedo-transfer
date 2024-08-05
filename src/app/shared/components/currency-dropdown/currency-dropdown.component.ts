@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-currency-dropdown',
@@ -10,6 +11,8 @@ export class CurrencyDropdownComponent {
   countryOptionTwo = 'USD';
   showOptionOne = false;
   showOptionTwo = false;
+
+  constructor(private router: Router) {}
 
   toggleShowOptionOne() {
     this.showOptionOne = !this.showOptionOne;
@@ -29,5 +32,9 @@ export class CurrencyDropdownComponent {
   onClickOptionTwo(currentOption: string) {
     this.countryOptionTwo = currentOption;
     this.showOptionTwo = false;
+  }
+
+  onClickContinue() {
+    this.router.navigate(['/transfer-money']);
   }
 }
