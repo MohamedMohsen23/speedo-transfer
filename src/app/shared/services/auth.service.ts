@@ -16,4 +16,10 @@ export class authService {
   login(email: string, password: string) {
     this.authController.login(email, password);
   }
+  isLoggedIn(): boolean {
+    if (localStorage.getItem('token')) {
+      return true;
+    }
+    return false;
+  }
 }
