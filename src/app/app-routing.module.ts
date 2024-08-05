@@ -11,6 +11,7 @@ import { MyProfileComponent } from './account/my-profile/my-profile.component';
 import { PaymentsHistoryComponent } from './account/payments-history/payments-history.component';
 import { SettingsComponent } from './account/settings/settings.component';
 import { ChangePasswordComponent } from './account/change-password/change-password.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -20,22 +21,24 @@ const routes: Routes = [
       {
         path: 'transfer-money',
         component: TransferMoneyComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'my-account',
         component: MyAccountComponent,
+         canActivate: [AuthGuard],
         children: [
           { path: '', component: MyProfileComponent },
-          { path: 'payments-history', component: PaymentsHistoryComponent },
-          { path: 'settings', component: SettingsComponent },
-          { path: 'change-password', component: ChangePasswordComponent },
+          { path: 'payments-history', component: PaymentsHistoryComponent, canActivate: [AuthGuard]  },
+          { path: 'settings', component: SettingsComponent , canActivate: [AuthGuard] },
+          { path: 'change-password', component: ChangePasswordComponent , canActivate: [AuthGuard] },
         ],
       },
     ],
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'logout', component: LogoutComponent },
+  { path: 'logout', component: LogoutComponent , canActivate: [AuthGuard] },
   { path: '**', component: NotFoundComponent },
 ];
 
