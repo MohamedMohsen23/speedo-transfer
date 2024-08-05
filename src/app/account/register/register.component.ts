@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { authService } from '../../shared/services/auth.service';
-import { RegisterUserData } from '../../shared/controllers/auth.controller';
+import { AuthService } from '../../shared/services/auth.service';
+import { RegisterUserData } from '../../shared/models/auth.interface';
 
 @Component({
   selector: 'app-register',
@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
     country: '',
   };
 
-  constructor(private fb: FormBuilder, private authService: authService) {}
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   ngOnInit() {
     this.registerForm = this.fb.group(
