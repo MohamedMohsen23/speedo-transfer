@@ -1,14 +1,7 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import { AuthController } from '../../controllers/auth.controller';
+import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { ScrollService } from '../../services/scroll.service';
-import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,8 +14,8 @@ export class NavbarComponent implements OnInit {
   showUserSettings = false;
 
   constructor(
-    private authController: AuthController,
-    private scrollService: ScrollService
+    private scrollService: ScrollService,
+    private authService: AuthService
   ) {}
 
   toggleNavbar() {
@@ -53,11 +46,11 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = {
-      username: this.authController.user?.username ?? '',
-      email: this.authController.user?.email ?? '',
-      password: this.authController.user?.password ?? '',
-      country: this.authController.user?.country ?? '',
-      dataOfBirth: this.authController.user?.dataOfBirth ?? '',
+      username: this.authService.user?.username ?? '',
+      email: this.authService.user?.email ?? '',
+      password: this.authService.user?.password ?? '',
+      country: this.authService.user?.country ?? '',
+      dataOfBirth: this.authService.user?.dataOfBirth ?? '',
     };
     // this.authController.getCurrentUser();
   }
@@ -68,6 +61,6 @@ export class NavbarComponent implements OnInit {
   }
 
   onClickLogout() {
-    this.authController.logout();
+    this.authService.logout();
   }
 }
