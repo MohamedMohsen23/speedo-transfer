@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { transferMoneyService } from '../../shared/services/transferMoney.service';
+import { AccountService } from '../../shared/services/account.service';
 
 @Component({
   selector: 'app-transfer-money',
   templateUrl: './transfer-money.component.html',
   styleUrl: './transfer-money.component.scss',
 })
-export class TransferMoneyComponent {
+export class TransferMoneyComponent implements OnInit {
   showFavourites = false;
   showOptionOne = false;
   showOptionTwo = false;
-  amount: number = 0;
   currentStep = 1;
+  currentUserName: string = '';
+  currentUserEmail: string = '';
   sendAmount: string = '';
   recipientGets: string = '';
   recipientName: string = '';
@@ -20,7 +22,10 @@ export class TransferMoneyComponent {
   countryOptionTwo = 'USD';
   favouritesList: any = [];
 
-  constructor(private transferMoneyService: transferMoneyService) {}
+  constructor(
+    private transferMoneyService: transferMoneyService,
+    private accountService: AccountService
+  ) {}
 
   onClickOptionOne(currentOption: string) {
     this.countryOptionOne = currentOption;
@@ -56,7 +61,6 @@ export class TransferMoneyComponent {
   }
   goToNextStep() {
     this.currentStep++;
-    console.log(this.currentStep);
   }
   get paragraphText(): string {
     switch (this.currentStep) {
@@ -81,5 +85,11 @@ export class TransferMoneyComponent {
     this.transferMoneyService
       .getFavourites()
       .subscribe((data) => (this.favouritesList = data));
+  }
+  ngOnInit(): void {
+    this.accountService.getCurrentUser().subscribe((data: any) => {
+      this.currentUserName = data.name;
+      this.currentUserEmail = data.email;
+    });
   }
 }

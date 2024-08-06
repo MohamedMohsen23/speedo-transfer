@@ -1202,7 +1202,9 @@
 
     <div class="flex justify-center">
       <div class="flex flex-col gap-2 items-center w-[590px] lineUp">
-        <h1 class="text-gray-1800 text-fs-md-title font-bold">1000 USD</h1>
+        <h1 class="text-gray-1800 text-fs-md-title font-bold">
+          {{ sendAmount }} {{ countryOptionOne }}
+        </h1>
         <p class="text-gray-1400 text-fs-body">Transfer amount</p>
         <div class="flex justify-between w-full pb-2">
           <span class="text-gray-1400 text-fs-body text-left"
@@ -1241,8 +1243,10 @@
         </div>
         <div>
           <p class="text-fs-body text-primary-500 pb-3">From</p>
-          <p class="text-p font-bold text-gray-1600 pb-3">Jonathon Smith</p>
-          <p class="text-sm text-gray-500">Account xxxx7890</p>
+          <p class="text-p font-bold text-gray-1600 pb-3">
+            {{ currentUserName }}
+          </p>
+          <p class="text-sm text-gray-900">{{ currentUserEmail }}</p>
         </div>
       </div>
     </div>
@@ -1298,8 +1302,10 @@
         </div>
         <div>
           <p class="text-fs-body text-primary-500 pb-3">To</p>
-          <p class="text-p font-bold text-gray-1600 pb-3">Asmaa Dosuky</p>
-          <p class="text-sm text-gray-500">Account xxxx7890</p>
+          <p class="text-p font-bold text-gray-1600 pb-3">
+            {{ recipientName }}
+          </p>
+          <p class="text-sm text-gray-900">{{ recipientAccount }}</p>
         </div>
       </div>
     </div>
@@ -1396,8 +1402,10 @@
         </div>
         <div>
           <p class="text-fs-body text-primary-500 pb-3">From</p>
-          <p class="text-p font-bold text-gray-1600 pb-3">Jonathon Smith</p>
-          <p class="text-sm text-gray-500">Account xxxx7890</p>
+          <p class="text-p font-bold text-gray-1600 pb-3">
+            {{ currentUserName }}
+          </p>
+          <p class="text-sm text-gray-900">{{ currentUserEmail }}</p>
         </div>
       </div>
     </div>
@@ -1454,15 +1462,20 @@
           </div>
           <div style="display: block">
             <p class="text-fs-body text-primary-500 pb-3">To</p>
-            <p class="text-p font-bold text-gray-1600 pb-3">Asmaa Dosuky</p>
-            <p class="text-sm text-gray-500">Account xxxx7890</p>
+            <p class="text-p font-bold text-gray-1600 pb-3">
+              {{ recipientName }}
+            </p>
+            <p class="text-sm text-gray-900">{{ recipientAccount }}</p>
           </div>
         </div>
       </div>
     </div>
     <div class="flex justify-center space-x-4 lineUp">
       <p class="text-fs-body text-gray-1400 border-b border-gray-400 pb-1">
-        Transfer amount <span class="pl-60 lineUp1">48.4220 EGP</span>
+        Transfer amount
+        <span class="pl-60 lineUp1"
+          >{{ sendAmount }} {{ countryOptionOne }}</span
+        >
       </p>
     </div>
 
