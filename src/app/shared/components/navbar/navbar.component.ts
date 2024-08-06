@@ -8,6 +8,7 @@ import {
 import { User } from '../../models/user.model';
 import { ScrollService } from '../../services/scroll.service';
 import { AuthService } from '../../services/auth.service';
+import { AccountService } from '../../services/account.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,13 +17,15 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
   @ViewChild('userSetting') userSetting!: ElementRef;
-  currentUser?: User;
+  // currentUser?: User;
+  userName: string = '';
   showNavbar = false;
   showUserSettings = false;
 
   constructor(
     private scrollService: ScrollService,
-    private authService: AuthService
+    private authService: AuthService,
+    private accountService: AccountService
   ) {}
 
   toggleNavbar() {
@@ -53,26 +56,24 @@ export class NavbarComponent implements OnInit {
   }
 
   get firstName(): string {
-    return this.currentUser?.username
-      ? this.currentUser.username.split(' ')[0][0]
-      : '';
+    return this.userName ? this.userName.split(' ')[0][0] : '';
   }
 
   get lastName(): string {
-    return this.currentUser?.username
-      ? this.currentUser.username.split(' ')[1][0]
-      : '';
+    return this.userName ? this.userName.split(' ')[1][0] : '';
   }
 
   ngOnInit(): void {
-    this.currentUser = {
-      username: this.authService.user?.username ?? '',
-      email: this.authService.user?.email ?? '',
-      password: this.authService.user?.password ?? '',
-      country: this.authService.user?.country ?? '',
-      dataOfBirth: this.authService.user?.dataOfBirth ?? '',
-    };
-    // this.authSerivce.getCurrentUser();
+    // this.currentUser = {
+    //   username: this.authService.user?.username ?? '',
+    //   email: this.authService.user?.email ?? '',
+    //   password: this.authService.user?.password ?? '',
+    //   country: this.authService.user?.country ?? '',
+    //   dataOfBirth: this.authService.user?.dataOfBirth ?? '',
+    // };
+    this.accountService.getCurrentUser().subscribe((data: any) => {
+      this.userName = data.name;
+    });
   }
 
   scrollTo(elementId: string) {
