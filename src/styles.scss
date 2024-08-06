@@ -5,7 +5,7 @@
 
 @layer utilities {
   .input {
-    @apply border border-gray-800 px-5 py-1 w-[220px] sm:w-[501px] h-[46px] sm:h-[56px] rounded-lg focus:outline-primary-400 placeholder:text-xs sm:placeholder:text-base;
+    @apply border border-gray-800 px-5 py-1 w-[270px] sm:w-[501px] h-[46px] sm:h-[56px] rounded-lg focus:outline-primary-400 placeholder:text-xs sm:placeholder:text-base;
   }
   .submit-btn,
   .continue-btn {
