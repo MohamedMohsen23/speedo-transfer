@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { transferMoneyService } from '../../shared/services/transferMoney.service';
+import { TransferMoneyService } from '../../shared/services/transferMoney.service';
 import { AccountService } from '../../shared/services/account.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class TransferMoneyComponent implements OnInit {
   currentStep = 1;
   currentUserName: string = '';
   currentUserEmail: string = '';
-  sendAmount: string = '';
+  sendAmount: number = 0;
   recipientGets: string = '';
   recipientName: string = '';
   recipientAccount: string = '';
@@ -23,7 +23,7 @@ export class TransferMoneyComponent implements OnInit {
   favouritesList: any = [];
 
   constructor(
-    private transferMoneyService: transferMoneyService,
+    private transferMoneyService: TransferMoneyService,
     private accountService: AccountService
   ) {}
 
@@ -90,6 +90,18 @@ export class TransferMoneyComponent implements OnInit {
     this.accountService.getCurrentUser().subscribe((data: any) => {
       this.currentUserName = data.name;
       this.currentUserEmail = data.email;
+    });
+  }
+  confirmTransfer() {
+    this.transferMoneyService.transferMoney({
+      senderCardNumber: '123',
+      recipientCardNumber: '123',
+      senderUserName: this.currentUserName,
+      senderEmail: this.currentUserEmail,
+      recipientUserName: this.recipientName,
+      recipientEmail: this.recipientAccount,
+      amount: this.sendAmount,
+      date: '01/01/2000',
     });
   }
 }
