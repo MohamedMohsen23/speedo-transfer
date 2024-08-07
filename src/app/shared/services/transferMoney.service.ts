@@ -41,6 +41,6 @@ export class TransferMoneyService {
     const headers = this.authservice.createAuthorizationHeader({
       Authorization: `Bearer ${this.authservice.getToken()}`,
     });
-    return this.api.post(`${BASE_URL}/favorites`, { headers: headers });
+    return this.api.post(`${BASE_URL}/favorites`, {}, { headers: headers });
   }
 }

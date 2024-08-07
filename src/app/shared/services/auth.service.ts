@@ -33,15 +33,18 @@ export class AuthService {
 
   register(userData: RegisterUserData) {
     const headers = this.createAuthorizationHeader();
-    this.api.post(`${BASE_URL}/register`, userData, { headers: headers });
-    this.user = new User(
-      userData.userName,
-      userData.password,
-      userData.email,
-      userData.country,
-      userData.dateOfBirth
-    );
-    this.router.navigate(['/login']);
+    this.api
+      .post(`${BASE_URL}/register`, userData, { headers: headers })
+      .subscribe(() => {
+        this.user = new User(
+          userData.userName,
+          userData.password,
+          userData.email,
+          userData.country,
+          userData.dateOfBirth
+        );
+        this.router.navigate(['/login']);
+      });
   }
 
   login(email: string, password: string) {
@@ -68,7 +71,7 @@ export class AuthService {
       Authorization: `Bearer ${this.getToken()}`,
     });
     return this.api
-      .post(`${BASE_URL}/logout`, { headers: headers })
+      .post(`${BASE_URL}/logout`, {}, { headers: headers })
       .subscribe(() => {
         localStorage.clear();
         this.router.navigate(['/logout']);

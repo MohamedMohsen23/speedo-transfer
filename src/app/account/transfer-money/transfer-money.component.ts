@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TransferMoneyService } from '../../shared/services/transferMoney.service';
 import { AccountService } from '../../shared/services/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-transfer-money',
@@ -24,7 +25,8 @@ export class TransferMoneyComponent implements OnInit {
 
   constructor(
     private transferMoneyService: TransferMoneyService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private router: Router
   ) {}
 
   onClickOptionOne(currentOption: string) {
@@ -78,8 +80,9 @@ export class TransferMoneyComponent implements OnInit {
     this.currentStep--;
   }
   onClickAddFavourites() {
-    this.currentStep++;
-    this.transferMoneyService.addFavourites(this.recipientAccount);
+    this.transferMoneyService
+      .addFavourites(this.recipientAccount)
+      .subscribe(() => {});
   }
   getFavouritesList() {
     this.transferMoneyService
@@ -103,5 +106,9 @@ export class TransferMoneyComponent implements OnInit {
       amount: this.sendAmount,
       date: '01/01/2000',
     });
+    // .subscribe(() => {
+    //   this.goToNextStep();
+    // });
+    this.goToNextStep();
   }
 }

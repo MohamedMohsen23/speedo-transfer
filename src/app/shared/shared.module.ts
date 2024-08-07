@@ -10,6 +10,7 @@ import { MobileApplicationComponent } from './components/mobile-application/mobi
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,5 +29,6 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     RouterModule.forRoot([]),
   ],
+  providers: [provideHttpClient()],
 })
 export class SharedModule {}
